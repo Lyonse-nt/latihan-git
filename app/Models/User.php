@@ -51,9 +51,9 @@ class User extends Authenticatable
         ];
     }
 
-    public function isSuperAdmin(): bool
+    public function isDeveloper(): bool
     {
-        return $this->role === 'super_admin';
+        return $this->role === 'developer';
     }
 
     public function isAdmin(): bool
@@ -61,14 +61,19 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isModerator(): bool
+    public function isMember(): bool
     {
-        return $this->role === 'moderator';
+        return $this->role === 'member';
     }
 
     public function hasRole(array $roles): bool
     {
         return in_array($this->role, $roles);
+    }
+
+    public function canManageUsers(): bool
+    {
+        return $this->role === 'developer';
     }
 
     public function isActive(): bool

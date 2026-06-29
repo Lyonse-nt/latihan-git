@@ -8,8 +8,24 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/dashboard', function () {
-    return redirect('/admin/dashboard');
+    $user = auth()->user();
+    
+    // Redirect based on role
+    if ($user->isDeveloper() || $user->isAdmin()) {
+        return redirect('/admin/dashboard');
+    }
+    
+    if ($user->isMember()) {
+        return redirect('/member/dashboard');
+    }
+    
+    return redirect('/');
 })->middleware(['auth'])->name('dashboard');
+
+// Member dashboard routes
+Route::middleware(['auth', 'role:member'])->prefix('member')->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\Member\DashboardController::class, 'index'])->name('member.dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

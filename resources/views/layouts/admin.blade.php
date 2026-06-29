@@ -47,26 +47,11 @@
                 <a href="{{ route('gallery.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('gallery.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
                     🖼️ Gallery
                 </a>
-                <a href="{{ route('events.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('events.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
-                    📅 Events
-                </a>
-                <a href="{{ route('timeline.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('timeline.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
-                    ⏳ Timeline
-                </a>
-                <a href="{{ route('hall-of-fame.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('hall-of-fame.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
-                    🏆 Hall of Fame
-                </a>
-                <a href="{{ route('quotes.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('quotes.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
-                    💬 Quotes
-                </a>
                 <a href="{{ route('guestbook.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('guestbook.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
                     📖 Guestbook
                 </a>
-                <a href="{{ route('announcements.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('announcements.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
-                    📢 Announcements
-                </a>
 
-                @if(auth()->user()->isSuperAdmin())
+                @if(auth()->user()->isDeveloper())
                     <div class="pt-4 pb-2 px-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Pengaturan Sistem</div>
                     <a href="{{ route('users.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors {{ request()->routeIs('users.*') ? 'bg-indigo-600/20 text-indigo-400 border border-indigo-500/20' : 'text-slate-400 hover:bg-slate-800 hover:text-slate-200' }}">
                         🛡️ Manage Users
@@ -150,13 +135,8 @@
                 <a href="{{ route('members.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">👥 Members</a>
                 <a href="{{ route('projects.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">💻 Projects</a>
                 <a href="{{ route('gallery.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">🖼️ Gallery</a>
-                <a href="{{ route('events.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">📅 Events</a>
-                <a href="{{ route('timeline.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">⏳ Timeline</a>
-                <a href="{{ route('hall-of-fame.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">🏆 Hall of Fame</a>
-                <a href="{{ route('quotes.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">💬 Quotes</a>
                 <a href="{{ route('guestbook.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">📖 Guestbook</a>
-                <a href="{{ route('announcements.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">📢 Announcements</a>
-                @if(auth()->user()->isSuperAdmin())
+                @if(auth()->user()->isDeveloper())
                     <a href="{{ route('users.index') }}" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-slate-300" onclick="toggleMobileMenu()">🛡️ Manage Users</a>
                 @endif
             </nav>

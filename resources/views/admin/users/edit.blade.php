@@ -48,9 +48,9 @@
                 <div class="space-y-2">
                     <label for="role" class="text-sm font-semibold text-slate-200">Hak Akses / Role <span class="text-rose-500">*</span></label>
                     <select name="role" id="role" required class="w-full bg-slate-950 border @error('role') border-rose-500 @else border-slate-800 @enderror rounded-xl px-3 py-2.5 text-sm text-slate-350 focus:outline-none focus:border-indigo-500">
-                        <option value="moderator" {{ old('role', $user->role) == 'moderator' ? 'selected' : '' }}>Moderator (Bisa kelola data, dilarang hapus)</option>
-                        <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin (Akses penuh, dilarang kelola user)</option>
-                        <option value="super_admin" {{ old('role', $user->role) == 'super_admin' ? 'selected' : '' }}>Super Admin (Akses penuh penuh)</option>
+                        <option value="member" {{ old('role', $user->role) == 'member' ? 'selected' : '' }}>Member (Read-only access)</option>
+                        <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin (Full CRUD access)</option>
+                        <option value="developer" {{ old('role', $user->role) == 'developer' ? 'selected' : '' }}>Developer (Full access + User Management)</option>
                     </select>
                     @error('role')
                         <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>

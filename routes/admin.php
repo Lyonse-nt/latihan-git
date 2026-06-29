@@ -14,10 +14,12 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
-    // Dashboard
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Dashboard - accessible by admin & developer
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->middleware('role:admin,developer')
+        ->name('dashboard');
 
-    // Bulk delete actions
+    // Bulk delete actions - accessible by admin & developer
     Route::post('/members/bulk-delete', [MemberController::class, 'bulkDestroy'])->name('members.bulkDestroy');
     Route::post('/projects/bulk-delete', [ProjectController::class, 'bulkDestroy'])->name('projects.bulkDestroy');
     Route::post('/gallery/bulk-delete', [GalleryController::class, 'bulkDestroy'])->name('gallery.bulkDestroy');
@@ -29,21 +31,25 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/announcements/bulk-delete', [AnnouncementController::class, 'bulkDestroy'])->name('announcements.bulkDestroy');
     Route::post('/users/bulk-delete', [UserController::class, 'bulkDestroy'])->name('users.bulkDestroy');
 
-    // Guestbook Custom Actions
+    // Guestbook Custom Actions - accessible by admin & developer
     Route::post('/guestbook/{guestbook}/approve', [GuestbookController::class, 'approve'])->name('guestbook.approve');
     Route::post('/guestbook/{guestbook}/reject', [GuestbookController::class, 'reject'])->name('guestbook.reject');
 
-    // Resources
-    Route::resource('members', MemberController::class);
-    Route::resource('projects', ProjectController::class);
-    Route::resource('gallery', GalleryController::class);
-    Route::resource('events', EventController::class);
-    Route::resource('timeline', TimelineController::class);
-    Route::resource('hall-of-fame', HallOfFameController::class);
-    Route::resource('quotes', QuoteController::class);
-    Route::resource('guestbook', GuestbookController::class)->only(['index', 'destroy']);
-    Route::resource('announcements', AnnouncementController::class);
+    // Resources - accessible by admin & developer
+    Route::middleware('role:admin,developer')->group(function () {
+        Route::resource('members', MemberController::class);
+        Route::resource('projects', ProjectController::class);
+        Route::resource('gallery', GalleryController::class);
+        Route::resource('events', EventController::class);
+        Route::resource('timeline', TimelineController::class);
+        Route::resource('hall-of-fame', HallOfFameController::class);
+        Route::resource('quotes', QuoteController::class);
+        Route::resource('guestbook', GuestbookController::class)->only(['index', 'destroy']);
+        Route::resource('announcements', AnnouncementController::class);
+    });
 
-    // User Management (restricted to super_admin only)
-    Route::resource('users', UserController::class)->middleware('role:super_admin');
+    // User Management - restricted to developer only
+    Route::middleware('role:developer')->group(function () {
+        Route::resource('users', UserController::class);
+    });
 });

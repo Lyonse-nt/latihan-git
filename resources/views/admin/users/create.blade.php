@@ -16,8 +16,8 @@
 @section('content')
 <div class="max-w-4xl mx-auto space-y-6">
     <div>
-        <h1 class="text-2xl font-bold tracking-tight text-white">Tambah Akun Staff Baru</h1>
-        <p class="text-sm text-slate-400 mt-1">Daftarkan akun administrator atau moderator baru untuk mengelola panel.</p>
+        <h1 class="text-2xl font-bold tracking-tight text-white">Tambah Akun User Baru</h1>
+        <p class="text-sm text-slate-400 mt-1">Daftarkan user baru (Developer, Admin, atau Member) untuk mengakses sistem.</p>
     </div>
 
     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
@@ -47,9 +47,9 @@
                 <div class="space-y-2">
                     <label for="role" class="text-sm font-semibold text-slate-200">Hak Akses / Role <span class="text-rose-500">*</span></label>
                     <select name="role" id="role" required class="w-full bg-slate-950 border @error('role') border-rose-500 @else border-slate-800 @enderror rounded-xl px-3 py-2.5 text-sm text-slate-350 focus:outline-none focus:border-indigo-500">
-                        <option value="moderator" {{ old('role') == 'moderator' ? 'selected' : '' }}>Moderator (Bisa kelola data, dilarang hapus)</option>
-                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin (Akses penuh, dilarang kelola user)</option>
-                        <option value="super_admin" {{ old('role') == 'super_admin' ? 'selected' : '' }}>Super Admin (Akses penuh penuh)</option>
+                        <option value="member" {{ old('role') == 'member' ? 'selected' : '' }}>Member (Read-only access)</option>
+                        <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin (Full CRUD access)</option>
+                        <option value="developer" {{ old('role') == 'developer' ? 'selected' : '' }}>Developer (Full access + User Management)</option>
                     </select>
                     @error('role')
                         <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>

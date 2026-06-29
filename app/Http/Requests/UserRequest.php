@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
                 Rule::unique('users')->ignore($userId),
             ],
             'password' => $isPost ? 'required|string|min:8|confirmed' : 'nullable|string|min:8|confirmed',
-            'role' => 'required|string|in:super_admin,admin,moderator',
+            'role' => 'required|string|in:developer,admin,member',
             'status' => 'required|string|in:active,inactive',
         ];
     }

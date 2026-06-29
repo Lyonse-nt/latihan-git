@@ -68,36 +68,6 @@
             </a>
         </div>
 
-        <!-- Events Card -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all hover:border-slate-700">
-            <div class="flex items-center justify-between">
-                <span class="text-3xl">📅</span>
-                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Agenda</span>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-2xl font-bold text-white tracking-tight">{{ $stats['events'] }}</h3>
-                <p class="text-sm text-slate-400 mt-1">Jumlah Event</p>
-            </div>
-            <a href="{{ route('events.index') }}" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-1 mt-4">
-                Kelola Event ➔
-            </a>
-        </div>
-
-        <!-- Quotes Card -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all hover:border-slate-700">
-            <div class="flex items-center justify-between">
-                <span class="text-3xl">💬</span>
-                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Mutiara</span>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-2xl font-bold text-white tracking-tight">{{ $stats['quotes'] }}</h3>
-                <p class="text-sm text-slate-400 mt-1">Quotes Kelas</p>
-            </div>
-            <a href="{{ route('quotes.index') }}" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-1 mt-4">
-                Kelola Quotes ➔
-            </a>
-        </div>
-
         <!-- Guestbook Card -->
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all hover:border-slate-700">
             <div class="flex items-center justify-between">
@@ -113,22 +83,8 @@
             </a>
         </div>
 
-        <!-- Hall of Fame Card -->
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all hover:border-slate-700">
-            <div class="flex items-center justify-between">
-                <span class="text-3xl">🏆</span>
-                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">Prestasi</span>
-            </div>
-            <div class="mt-4">
-                <h3 class="text-2xl font-bold text-white tracking-tight">{{ $stats['hall_of_fame'] }}</h3>
-                <p class="text-sm text-slate-400 mt-1">Hall of Fame</p>
-            </div>
-            <a href="{{ route('hall-of-fame.index') }}" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-1 mt-4">
-                Kelola Prestasi ➔
-            </a>
-        </div>
-
-        <!-- Users Card -->
+        <!-- Users Card - Only for Developer -->
+        @if(auth()->user()->isDeveloper())
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 transition-all hover:border-slate-700">
             <div class="flex items-center justify-between">
                 <span class="text-3xl">🛡️</span>
@@ -138,16 +94,11 @@
                 <h3 class="text-2xl font-bold text-white tracking-tight">{{ $stats['users'] }}</h3>
                 <p class="text-sm text-slate-400 mt-1">User Admin</p>
             </div>
-            @if(auth()->user()->isSuperAdmin())
-                <a href="{{ route('users.index') }}" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-1 mt-4">
-                    Kelola User Admin ➔
-                </a>
-            @else
-                <span class="text-xs text-slate-500 inline-flex items-center gap-1 mt-4">
-                    Hanya Super Admin
-                </span>
-            @endif
+            <a href="{{ route('users.index') }}" class="text-xs text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center gap-1 mt-4">
+                Kelola User Admin ➔
+            </a>
         </div>
+        @endif
     </div>
 
     <!-- Recent Activity Section -->

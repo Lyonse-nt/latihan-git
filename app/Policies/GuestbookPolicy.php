@@ -8,6 +8,6 @@ class GuestbookPolicy extends BaseContentPolicy
 {
     public function approve(User $user): bool
     {
-        return $user->hasRole(['super_admin', 'admin', 'moderator']);
+        return $user->hasRole(['developer', 'admin']);
     }
 }

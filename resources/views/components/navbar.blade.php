@@ -66,11 +66,8 @@
 
                 <!-- Auth Buttons -->
                 <div class="hidden md:flex items-center gap-3">
-                    <a href="{{ route('login') }}" class="text-white hover:text-[#6366F1] transition-colors font-semibold">
+                    <a href="{{ route('login') }}" class="px-6 py-2 bg-[#6366F1] hover:bg-[#8B5CF6] rounded-full transition-all duration-300 btn-ripple font-semibold">
                         Masuk
-                    </a>
-                    <a href="{{ route('register') }}" class="px-6 py-2 bg-[#6366F1] hover:bg-[#8B5CF6] rounded-full transition-all duration-300 btn-ripple font-semibold">
-                        Daftar
                     </a>
                 </div>
             @endauth
@@ -115,8 +112,7 @@
                 <a href="#memories" class="block text-white hover:text-[#6366F1] transition-colors">Kenangan</a>
                 <a href="#guestbook" class="block text-white hover:text-[#6366F1] transition-colors">Buku Tamu</a>
                 <div class="pt-4 border-t border-white/10 flex flex-col gap-2">
-                    <a href="{{ route('login') }}" class="text-white hover:text-[#6366F1] transition-colors font-semibold">Masuk</a>
-                    <a href="{{ route('register') }}" class="px-4 py-2 bg-[#6366F1] hover:bg-[#8B5CF6] rounded-full text-center transition-colors font-semibold">Daftar</a>
+                    <a href="{{ route('login') }}" class="px-4 py-2 bg-[#6366F1] hover:bg-[#8B5CF6] rounded-full text-center transition-colors font-semibold">Masuk</a>
                 </div>
             @endauth
         </div>
