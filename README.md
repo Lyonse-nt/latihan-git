@@ -1,59 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# A4A - Antek Antek Akey Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website komunitas kelas modern yang dibangun dengan Laravel 12, Tailwind CSS, dan Native JavaScript.
 
-## About Laravel
+## 🚀 Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Laravel 12** - Backend Framework
+- **Tailwind CSS 4.0** - Styling
+- **Native JavaScript** - Interactivity & Animations
+- **Vite** - Build Tool
+- **Blade Template** - View Engine
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Modern Dark Mode Design** - Premium UI/UX dengan style guide terinspirasi dari Apple, Linear, Framer
+- **Smooth Animations** - Fade up, scale, counter animations, scroll reveal
+- **Interactive Components** - Modal, lightbox, auto slider, smooth scroll
+- **Responsive Layout** - Mobile-first design yang responsive di semua device
+- **Glassmorphism Effects** - Modern glass effect dengan backdrop blur
+- **Performance Optimized** - Lazy loading, Intersection Observer API
 
-## Learning Laravel
+## 🎨 Style Guide
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Colors
+- Background: `#09090B`
+- Primary: `#6366F1`
+- Secondary: `#8B5CF6`
+- Accent: `#22D3EE`
+- Card: `#18181B`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Typography
+- Heading: **Sora**
+- Body: **Poppins**
 
-## Laravel Sponsors
+## 📦 Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Clone repository
+2. Install dependencies
 
-### Premium Partners
+```bash
+composer install
+npm install
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3. Setup environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+4. Run development server
+```bash
+npm run dev
+php artisan serve
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Open browser
+```
+http://localhost:8000
+```
 
-## Code of Conduct
+## 📁 Project Structure
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+resources/
+├── css/
+│   ├── app.css              # Main CSS with Tailwind config
+│   ├── animations.css       # Animation utilities
+│   └── variables.css        # CSS variables
+├── js/
+│   ├── app.js              # Main JavaScript entry
+│   ├── navbar.js           # Navbar functionality
+│   ├── counter.js          # Counter animations
+│   ├── reveal.js           # Scroll reveal animations
+│   ├── modal.js            # Modal functionality
+│   ├── gallery.js          # Gallery & lightbox
+│   ├── api.js              # Fetch API utilities
+│   └── utils.js            # Helper functions
+└── views/
+    ├── layouts/
+    │   └── app.blade.php   # Main layout
+    ├── components/
+    │   ├── navbar.blade.php
+    │   ├── footer.blade.php
+    │   ├── hero.blade.php
+    │   ├── about.blade.php
+    │   ├── statistics.blade.php
+    │   ├── members.blade.php
+    │   ├── memories.blade.php
+    │   ├── timeline.blade.php
+    │   ├── hall-of-fame.blade.php
+    │   ├── quotes.blade.php
+    │   └── guestbook.blade.php
+    └── pages/
+        └── home.blade.php
+```
 
-## Security Vulnerabilities
+## 🎯 Sections
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. **Hero** - Full screen hero dengan gradient background
+2. **About** - Penjelasan komunitas dengan layout dua kolom
+3. **Statistics** - Counter animation untuk statistik
+4. **Meet The Squad** - Grid 16 member cards dengan modal
+5. **Memories** - Masonry gallery dengan filter dan lightbox
+6. **Timeline** - Timeline vertikal dengan scroll animations
+7. **Hall of Fame** - Awards dan achievement
+8. **Quotes** - Auto slider quotes
+9. **Guestbook** - Form modern untuk pesan
+10. **Footer** - Informasi kontak dan social media
 
-## License
+## 🔮 Future Development
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Backend API integration untuk data dinamis
+- Member detail pages
+- Admin panel untuk manage content
+- Gallery upload functionality
+- Guestbook dengan database
+- Authentication system
+
+## 👥 Team
+
+Dibuat dengan ❤️ oleh **A4A Team** (Antek Antek Akey)
+
+---
+
+**Built by Code. Bound by Friendship.**

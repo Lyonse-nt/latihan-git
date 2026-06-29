@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Member 1",
+    "nickname": "The Coder",
+    "role": "Full Stack Developer",
+    "image": "https://ui-avatars.com/api/?name=Member+1&size=200&background=6366F1&color=fff",
+    "bio": "Passionate developer with a love for clean code"
+  },
+  {
+    "id": 2,
+    "name": "Member 2",
+    "nickname": "The Designer",
+    "role": "UI/UX Designer",
+    "image": "https://ui-avatars.com/api/?name=Member+2&size=200&background=8B5CF6&color=fff",
+    "bio": "Creating beautiful and functional designs"
+  },
+  {
+    "id": 3,
+    "name": "Member 3",
+    "nickname": "The Leader",
+    "role": "Project Manager",
+    "image": "https://ui-avatars.com/api/?name=Member+3&size=200&background=22D3EE&color=fff",
+    "bio": "Leading the team to success"
+  }
+]
