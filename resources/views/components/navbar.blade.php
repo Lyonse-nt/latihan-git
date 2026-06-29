@@ -12,7 +12,6 @@
                     <a href="/#about" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Tentang</a>
                     <a href="/#members" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Anggota</a>
                     <a href="/#memories" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Kenangan</a>
-                    <a href="/#timeline" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Perjalanan</a>
                     <a href="/#guestbook" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Buku Tamu</a>
                     <a href="/dashboard" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Dashboard</a>
                 </div>
@@ -62,7 +61,6 @@
                     <a href="#about" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Tentang</a>
                     <a href="#members" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Anggota</a>
                     <a href="#memories" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Kenangan</a>
-                    <a href="#timeline" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Perjalanan</a>
                     <a href="#guestbook" class="nav-link text-white hover:text-[#6366F1] transition-colors py-2">Buku Tamu</a>
                 </div>
 
@@ -92,7 +90,6 @@
                 <a href="/#about" class="block text-white hover:text-[#6366F1] transition-colors">Tentang</a>
                 <a href="/#members" class="block text-white hover:text-[#6366F1] transition-colors">Anggota</a>
                 <a href="/#memories" class="block text-white hover:text-[#6366F1] transition-colors">Kenangan</a>
-                <a href="/#timeline" class="block text-white hover:text-[#6366F1] transition-colors">Perjalanan</a>
                 <a href="/#guestbook" class="block text-white hover:text-[#6366F1] transition-colors">Buku Tamu</a>
                 <a href="/dashboard" class="block text-white hover:text-[#6366F1] transition-colors">Dashboard</a>
                 <div class="pt-4 border-t border-white/10">
@@ -116,7 +113,6 @@
                 <a href="#about" class="block text-white hover:text-[#6366F1] transition-colors">Tentang</a>
                 <a href="#members" class="block text-white hover:text-[#6366F1] transition-colors">Anggota</a>
                 <a href="#memories" class="block text-white hover:text-[#6366F1] transition-colors">Kenangan</a>
-                <a href="#timeline" class="block text-white hover:text-[#6366F1] transition-colors">Perjalanan</a>
                 <a href="#guestbook" class="block text-white hover:text-[#6366F1] transition-colors">Buku Tamu</a>
                 <div class="pt-4 border-t border-white/10 flex flex-col gap-2">
                     <a href="{{ route('login') }}" class="text-white hover:text-[#6366F1] transition-colors font-semibold">Masuk</a>

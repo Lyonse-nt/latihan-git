@@ -17,10 +17,14 @@
             @endphp
             
             @foreach($awards as $award)
-            <div class="glass p-8 rounded-3xl text-center hover-lift animate-scale">
-                <div class="text-6xl mb-4">{{ $award['icon'] }}</div>
-                <h3 class="text-2xl font-bold font-['Sora'] mb-2">{{ $award['title'] }}</h3>
-                <p class="text-[#22D3EE] text-lg">{{ $award['winner'] }}</p>
+            <div class="relative overflow-hidden rounded-3xl text-center hover-lift animate-scale transition-all duration-500 group">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl"></div>
+                <div class="absolute inset-0 bg-gradient-to-br from-[#6366F1]/0 to-[#8B5CF6]/0 group-hover:from-[#6366F1]/10 group-hover:to-[#8B5CF6]/10 rounded-3xl transition-all duration-500"></div>
+                <div class="relative p-8">
+                    <div class="text-6xl mb-4">{{ $award['icon'] }}</div>
+                    <h3 class="text-2xl font-bold font-['Sora'] mb-2">{{ $award['title'] }}</h3>
+                    <p class="text-[#22D3EE] text-lg">{{ $award['winner'] }}</p>
+                </div>
             </div>
             @endforeach
         </div>

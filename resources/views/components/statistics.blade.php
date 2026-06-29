@@ -6,35 +6,47 @@
         
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Card 1: Members -->
-            <div class="glass p-8 rounded-3xl text-center hover-lift animate-scale">
-                <div class="text-6xl font-bold font-['Sora'] text-[#6366F1] mb-4">
-                    <span class="counter" data-target="16">0</span>
+            <div class="relative overflow-hidden rounded-3xl text-center hover-lift animate-scale">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl"></div>
+                <div class="relative p-8">
+                    <div class="text-6xl font-bold font-['Sora'] text-[#6366F1] mb-4">
+                        <span class="counter" data-target="16">0</span>
+                    </div>
+                    <p class="text-xl text-gray-300">Anggota</p>
                 </div>
-                <p class="text-xl text-gray-300">Anggota</p>
             </div>
             
             <!-- Card 2: Projects -->
-            <div class="glass p-8 rounded-3xl text-center hover-lift animate-scale">
-                <div class="text-6xl font-bold font-['Sora'] text-[#8B5CF6] mb-4">
-                    <span class="counter" data-target="42">0</span>+
+            <div class="relative overflow-hidden rounded-3xl text-center hover-lift animate-scale">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl"></div>
+                <div class="relative p-8">
+                    <div class="text-6xl font-bold font-['Sora'] text-[#8B5CF6] mb-4">
+                        <span class="counter" data-target="42">0</span>+
+                    </div>
+                    <p class="text-xl text-gray-300">Proyek</p>
                 </div>
-                <p class="text-xl text-gray-300">Proyek</p>
             </div>
             
             <!-- Card 3: Events -->
-            <div class="glass p-8 rounded-3xl text-center hover-lift animate-scale">
-                <div class="text-6xl font-bold font-['Sora'] text-[#22D3EE] mb-4">
-                    <span class="counter" data-target="28">0</span>+
+            <div class="relative overflow-hidden rounded-3xl text-center hover-lift animate-scale">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl"></div>
+                <div class="relative p-8">
+                    <div class="text-6xl font-bold font-['Sora'] text-[#22D3EE] mb-4">
+                        <span class="counter" data-target="28">0</span>+
+                    </div>
+                    <p class="text-xl text-gray-300">Kegiatan</p>
                 </div>
-                <p class="text-xl text-gray-300">Kegiatan</p>
             </div>
             
             <!-- Card 4: Photos -->
-            <div class="glass p-8 rounded-3xl text-center hover-lift animate-scale">
-                <div class="text-6xl font-bold font-['Sora'] text-[#6366F1] mb-4">
-                    <span class="counter" data-target="500">0</span>+
+            <div class="relative overflow-hidden rounded-3xl text-center hover-lift animate-scale">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl"></div>
+                <div class="relative p-8">
+                    <div class="text-6xl font-bold font-['Sora'] text-[#6366F1] mb-4">
+                        <span class="counter" data-target="500">0</span>+
+                    </div>
+                    <p class="text-xl text-gray-300">Foto</p>
                 </div>
-                <p class="text-xl text-gray-300">Foto</p>
             </div>
         </div>
     </div>

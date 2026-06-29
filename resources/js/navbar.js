@@ -6,11 +6,13 @@ window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 50) {
-        navbar.classList.add('glass', 'border-b', 'border-white/10');
-        navbar.classList.remove('bg-transparent');
+        navbar.style.background = 'rgba(24, 24, 27, 0.85)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.15)';
     } else {
-        navbar.classList.remove('glass', 'border-b', 'border-white/10');
-        navbar.classList.add('bg-transparent');
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.borderBottom = 'none';
     }
     
     lastScroll = currentScroll;
