@@ -55,9 +55,17 @@
                 </div>
 
                 <!-- Date of Birth -->
+                <!-- Date of Birth -->
                 <div class="space-y-2">
                     <label for="date_of_birth" class="text-sm font-semibold text-slate-200">Tanggal Lahir</label>
-                    <input type="date" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth', $member->date_of_birth ? $member->date_of_birth->format('Y-m-d') : '') }}" class="w-full bg-slate-950 border @error('date_of_birth') border-rose-500 @else border-slate-800 @enderror rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors">
+                    <div class="relative">
+                        <input type="text" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth', $member->date_of_birth ? $member->date_of_birth->format('Y-m-d') : '') }}" 
+                            class="datepicker w-full bg-slate-950 border @error('date_of_birth') border-rose-500 @else border-slate-800 @enderror rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-indigo-500 transition-colors"
+                            placeholder="Pilih tanggal lahir" readonly>
+                        <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
                     @error('date_of_birth')
                         <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>
                     @enderror
@@ -138,4 +146,33 @@
         </form>
     </div>
 </div>
+
+<style>
+    .flatpickr-calendar {
+        background: rgb(15, 23, 42) !important;
+        border: 1px solid rgb(51, 65, 85) !important;
+        border-radius: 1rem !important;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3) !important;
+    }
+    .flatpickr-months { background: rgb(15, 23, 42) !important; border-radius: 1rem 1rem 0 0 !important; }
+    .flatpickr-month, .flatpickr-current-month { color: rgb(226, 232, 240) !important; }
+    .flatpickr-weekdays, .flatpickr-days { background: rgb(15, 23, 42) !important; }
+    .flatpickr-weekday { color: rgb(148, 163, 184) !important; }
+    .flatpickr-day { color: rgb(226, 232, 240) !important; border-radius: 0.5rem !important; }
+    .flatpickr-day:hover { background: rgb(99, 102, 241) !important; border-color: rgb(99, 102, 241) !important; color: white !important; }
+    .flatpickr-day.selected, .flatpickr-day.selected:hover { background: rgb(99, 102, 241) !important; border-color: rgb(99, 102, 241) !important; color: white !important; }
+    .flatpickr-day.today { border-color: rgb(99, 102, 241) !important; color: rgb(99, 102, 241) !important; }
+    .flatpickr-day.disabled, .flatpickr-day.prevMonthDay, .flatpickr-day.nextMonthDay { color: rgb(51, 65, 85) !important; }
+    .flatpickr-months .flatpickr-prev-month svg, .flatpickr-months .flatpickr-next-month svg { fill: rgb(226, 232, 240) !important; }
+    .flatpickr-months .flatpickr-prev-month:hover svg, .flatpickr-months .flatpickr-next-month:hover svg { fill: rgb(99, 102, 241) !important; }
+    .flatpickr-current-month input.cur-year { color: rgb(226, 232, 240) !important; }
+    .flatpickr-current-month .flatpickr-monthDropdown-months { background: rgb(15, 23, 42) !important; color: rgb(226, 232, 240) !important; }
+    .flatpickr-current-month .flatpickr-monthDropdown-months option { background: rgb(15, 23, 42) !important; }
+    input.flatpickr-input[readonly] { display: none; }
+</style>
+
 @endsection
+
+@push('scripts')
+@vite('resources/js/datepicker.js')
+@endpush
