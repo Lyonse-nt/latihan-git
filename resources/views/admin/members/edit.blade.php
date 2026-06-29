@@ -81,21 +81,8 @@
                 </div>
 
                 <!-- Photo -->
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-slate-200 block">Foto Profil (Max 2MB)</label>
-                    @if($member->photo)
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-12 h-12 rounded-full overflow-hidden border border-slate-700 bg-slate-800">
-                                <img src="{{ asset('storage/' . $member->photo) }}" alt="Preview" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs text-slate-400">Ganti foto dengan mengupload file baru.</span>
-                        </div>
-                    @endif
-                    <input type="file" name="photo" id="photo" accept="image/*" class="w-full bg-slate-950 border @error('photo') border-rose-500 @else border-slate-800 @enderror rounded-xl px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-indigo-500 transition-colors file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-slate-200 hover:file:bg-slate-700">
-                    @error('photo')
-                        <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+                <!-- Photo -->
+                <x-photo-upload name="photo" label="Foto Profil" :currentPhoto="$member->photo" hint="JPG, PNG, WEBP. Max 2MB." />
 
                 <!-- Instagram -->
                 <div class="space-y-2">
@@ -175,4 +162,5 @@
 
 @push('scripts')
 @vite('resources/js/datepicker.js')
+@vite('resources/js/cropper.js')
 @endpush

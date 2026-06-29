@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Member;
 use App\Models\Project;
+use App\Traits\HandlesBase64Image;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, HandlesBase64Image;
 
     public function index(Request $request)
     {
@@ -67,6 +68,10 @@ class ProjectController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('projects', 'public');
+        } elseif ($request->filled('thumbnail') && str_contains($request->input('thumbnail'), 'base64,')) {
+            $data['thumbnail'] = $this->storeBase64Image($request->input('thumbnail'), 'projects');
+        } else {
+            unset($data['thumbnail']);
         }
 
         Project::create($data);
@@ -88,10 +93,12 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('thumbnail')) {
-            if ($project->thumbnail) {
-                Storage::disk('public')->delete($project->thumbnail);
-            }
+            if ($project->thumbnail) Storage::disk('public')->delete($project->thumbnail);
             $data['thumbnail'] = $request->file('thumbnail')->store('projects', 'public');
+        } elseif ($request->filled('thumbnail') && str_contains($request->input('thumbnail'), 'base64,')) {
+            $data['thumbnail'] = $this->replaceBase64Image($request->input('thumbnail'), $project->thumbnail, 'projects');
+        } else {
+            unset($data['thumbnail']);
         }
 
         $project->update($data);

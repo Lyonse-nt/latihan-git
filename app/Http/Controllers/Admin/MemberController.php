@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MemberRequest;
 use App\Models\Member;
+use App\Traits\HandlesBase64Image;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, HandlesBase64Image;
 
     public function index(Request $request)
     {
@@ -62,6 +63,10 @@ class MemberController extends Controller
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('members', 'public');
+        } elseif ($request->filled('photo') && str_contains($request->input('photo'), 'base64,')) {
+            $data['photo'] = $this->storeBase64Image($request->input('photo'), 'members');
+        } else {
+            unset($data['photo']);
         }
 
         $data['is_active'] = $request->has('is_active');
@@ -91,10 +96,12 @@ class MemberController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('photo')) {
-            if ($member->photo) {
-                Storage::disk('public')->delete($member->photo);
-            }
+            if ($member->photo) Storage::disk('public')->delete($member->photo);
             $data['photo'] = $request->file('photo')->store('members', 'public');
+        } elseif ($request->filled('photo') && str_contains($request->input('photo'), 'base64,')) {
+            $data['photo'] = $this->replaceBase64Image($request->input('photo'), $member->photo, 'members');
+        } else {
+            unset($data['photo']);
         }
 
         $data['is_active'] = $request->has('is_active');

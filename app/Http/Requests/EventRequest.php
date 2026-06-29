@@ -19,7 +19,7 @@ class EventRequest extends FormRequest
             'date' => 'nullable|date',
             'time' => 'nullable|date_format:H:i:s,H:i', // Accept both formats
             'description' => 'nullable|string',
-            'poster' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'poster' => 'nullable|string',
         ];
     }
 }

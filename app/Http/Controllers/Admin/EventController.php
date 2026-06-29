@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
+use App\Traits\HandlesBase64Image;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, HandlesBase64Image;
 
     public function index(Request $request)
     {
@@ -56,6 +57,10 @@ class EventController extends Controller
 
         if ($request->hasFile('poster')) {
             $data['poster'] = $request->file('poster')->store('events', 'public');
+        } elseif ($request->filled('poster') && str_contains($request->input('poster'), 'base64,')) {
+            $data['poster'] = $this->storeBase64Image($request->input('poster'), 'events');
+        } else {
+            unset($data['poster']);
         }
 
         Event::create($data);
@@ -76,10 +81,12 @@ class EventController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('poster')) {
-            if ($event->poster) {
-                Storage::disk('public')->delete($event->poster);
-            }
+            if ($event->poster) Storage::disk('public')->delete($event->poster);
             $data['poster'] = $request->file('poster')->store('events', 'public');
+        } elseif ($request->filled('poster') && str_contains($request->input('poster'), 'base64,')) {
+            $data['poster'] = $this->replaceBase64Image($request->input('poster'), $event->poster, 'events');
+        } else {
+            unset($data['poster']);
         }
 
         $event->update($data);

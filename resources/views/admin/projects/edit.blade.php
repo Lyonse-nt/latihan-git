@@ -64,21 +64,7 @@
                 </div>
 
                 <!-- Thumbnail -->
-                <div class="space-y-2">
-                    <label class="text-sm font-semibold text-slate-200 block">Thumbnail Image (Max 2MB)</label>
-                    @if($project->thumbnail)
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-16 h-10 rounded-lg overflow-hidden border border-slate-850 bg-slate-800">
-                                <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="Preview" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs text-slate-400">Ganti thumbnail dengan mengupload file baru.</span>
-                        </div>
-                    @endif
-                    <input type="file" name="thumbnail" id="thumbnail" accept="image/*" class="w-full bg-slate-950 border @error('thumbnail') border-rose-500 @else border-slate-800 @enderror rounded-xl px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-indigo-500 file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-slate-200 hover:file:bg-slate-700">
-                    @error('thumbnail')
-                        <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-photo-upload name="thumbnail" label="Thumbnail Image" :currentPhoto="$project->thumbnail" hint="JPG, PNG, WEBP. Max 2MB." />
 
                 <!-- Repository URL -->
                 <div class="space-y-2">
@@ -121,3 +107,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+@vite('resources/js/cropper.js')
+@endpush

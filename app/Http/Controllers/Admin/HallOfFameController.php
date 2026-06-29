@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\HallOfFameRequest;
 use App\Models\HallOfFame;
 use App\Models\Member;
+use App\Traits\HandlesBase64Image;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class HallOfFameController extends Controller
 {
-    use AuthorizesRequests;
+    use AuthorizesRequests, HandlesBase64Image;
 
     public function index(Request $request)
     {
@@ -68,6 +69,10 @@ class HallOfFameController extends Controller
 
         if ($request->hasFile('photo')) {
             $data['photo'] = $request->file('photo')->store('hall_of_fames', 'public');
+        } elseif ($request->filled('photo') && str_contains($request->input('photo'), 'base64,')) {
+            $data['photo'] = $this->storeBase64Image($request->input('photo'), 'hall_of_fames');
+        } else {
+            unset($data['photo']);
         }
 
         // If member_id is selected, retrieve and save the member name as winner_name
@@ -97,10 +102,12 @@ class HallOfFameController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('photo')) {
-            if ($hallOfFame->photo) {
-                Storage::disk('public')->delete($hallOfFame->photo);
-            }
+            if ($hallOfFame->photo) Storage::disk('public')->delete($hallOfFame->photo);
             $data['photo'] = $request->file('photo')->store('hall_of_fames', 'public');
+        } elseif ($request->filled('photo') && str_contains($request->input('photo'), 'base64,')) {
+            $data['photo'] = $this->replaceBase64Image($request->input('photo'), $hallOfFame->photo, 'hall_of_fames');
+        } else {
+            unset($data['photo']);
         }
 
         if ($request->input('member_id')) {

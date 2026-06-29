@@ -19,7 +19,7 @@ class MemberRequest extends FormRequest
             'role' => 'required|string|max:100',
             'bio' => 'nullable|string',
             'date_of_birth' => 'nullable|date',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'photo' => 'nullable|string',
             'instagram' => 'nullable|string|max:100',
             'github' => 'nullable|string|max:100',
             'email' => 'nullable|email|max:255',

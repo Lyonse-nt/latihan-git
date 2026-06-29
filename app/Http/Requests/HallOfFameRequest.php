@@ -18,7 +18,7 @@ class HallOfFameRequest extends FormRequest
             'category' => 'required|string|max:255',
             'winner_name' => 'nullable|string|max:255',
             'year' => 'required|integer|digits:4|min:1900',
-            'photo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'photo' => 'nullable|string',
         ];
     }
 }

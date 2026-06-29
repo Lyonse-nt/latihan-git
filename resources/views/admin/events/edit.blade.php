@@ -63,20 +63,8 @@
                 </div>
 
                 <!-- Poster -->
-                <div class="space-y-2 md:col-span-2">
-                    <label class="text-sm font-semibold text-slate-200 block">Poster Event (Max 2MB)</label>
-                    @if($event->poster)
-                        <div class="flex items-center gap-3 mb-2">
-                            <div class="w-12 h-16 rounded overflow-hidden border border-slate-800 bg-slate-800">
-                                <img src="{{ asset('storage/' . $event->poster) }}" alt="Preview" class="w-full h-full object-cover">
-                            </div>
-                            <span class="text-xs text-slate-400">Ganti poster dengan mengupload file baru.</span>
-                        </div>
-                    @endif
-                    <input type="file" name="poster" id="poster" accept="image/*" class="w-full bg-slate-950 border @error('poster') border-rose-500 @else border-slate-800 @enderror rounded-xl px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-indigo-500 file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-slate-200 hover:file:bg-slate-700">
-                    @error('poster')
-                        <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>
-                    @enderror
+                <div class="md:col-span-2">
+                    <x-photo-upload name="poster" label="Poster Event" :currentPhoto="$event->poster" hint="JPG, PNG, WEBP. Max 2MB." />
                 </div>
             </div>
 
@@ -102,3 +90,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+@vite('resources/js/cropper.js')
+@endpush

@@ -79,13 +79,7 @@
                 </div>
 
                 <!-- Photo -->
-                <div class="space-y-2">
-                    <label for="photo" class="text-sm font-semibold text-slate-200">Foto Profil (Max 2MB)</label>
-                    <input type="file" name="photo" id="photo" accept="image/*" class="w-full bg-slate-950 border @error('photo') border-rose-500 @else border-slate-800 @enderror rounded-xl px-4 py-2 text-sm text-slate-300 focus:outline-none focus:border-indigo-500 transition-colors file:mr-4 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-slate-200 hover:file:bg-slate-700">
-                    @error('photo')
-                        <p class="text-xs text-rose-400 mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-photo-upload name="photo" label="Foto Profil" hint="JPG, PNG, WEBP. Max 2MB." />
 
                 <!-- Instagram -->
                 <div class="space-y-2">
@@ -230,4 +224,5 @@
 
 @push('scripts')
 @vite('resources/js/datepicker.js')
+@vite('resources/js/cropper.js')
 @endpush

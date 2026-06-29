@@ -17,7 +17,7 @@ class ProjectRequest extends FormRequest
             'member_id' => 'nullable|exists:members,id',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+            'thumbnail' => 'nullable|string',
             'repository_url' => 'nullable|url|max:255',
             'demo_url' => 'nullable|url|max:255',
             'status' => 'required|string|in:draft,ongoing,completed,archived',
